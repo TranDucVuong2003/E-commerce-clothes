@@ -1,0 +1,53 @@
+@font-face {
+    font-family: Integral;
+    font-weight: 700;
+    src: url("./../fonts/Inter/Inter-Bold.otf");
+}
+@font-face {
+    font-family: Integral;
+    font-weight: 600;
+    src: url("./../fonts/Inter/Inter-SemiBold.otf");
+}
+@font-face {
+    font-family: Integral;
+    font-weight: 400;
+    src: url("./../fonts/Inter/Inter-Medium.otf");
+}
+@font-face {
+    font-family: Integral;
+    font-weight: 300;
+    src: url("./../fonts/Inter/Inter-Light.otf");
+}
+@font-face {
+    font-family: Integral;
+    font-weight: 800;
+    src: url("./../fonts/Inter/Inter-ExtraBold.otf");
+}
+
+
+
+@font-face {
+    font-family: Satoshi;
+    font-weight: 700;
+    src: url("./../fonts/Satoshi/Satoshi-Bold.otf");
+}
+@font-face {
+    font-family: Satoshi;
+    font-weight: 600;
+    src: url("./../fonts/Satoshi/Satoshi-Bold.otf");
+}
+@font-face {
+    font-family: Satoshi;
+    font-weight: 400;
+    src: url("./../fonts/Satoshi/Satoshi-Regular.otf");
+}
+@font-face {
+    font-family: Satoshi;
+    font-weight: 300;
+    src: url("./../fonts/Satoshi/Satoshi-Light.otf");
+}
+@font-face {
+    font-family: Satoshi;
+    font-weight: 800;
+    src: url("./../fonts/Satoshi/Satoshi-BoldItalic.otf");
+}

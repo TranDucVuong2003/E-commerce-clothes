@@ -1,0 +1,14 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.container {
+    max-width: 1240px;
+    margin: 0 auto;
+}
+
+html{
+    /* font-family: Integral; */
+    font-family: Satoshi;
+}
