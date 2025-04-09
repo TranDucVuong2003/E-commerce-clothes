@@ -34,7 +34,8 @@ const responsive = {
 };
 
 function ProductList() {
-  const { productSellList, isPendingProductSellList, isAuth } = useContext(AppContext);
+  const { productSellList, isPendingProductSellList, isAuth } =
+    useContext(AppContext);
 
   useEffect(() => {
     if (isAuth) {
@@ -46,6 +47,7 @@ function ProductList() {
         reset: false,
       });
 
+      // Reveal all elements
       sr.reveal(".new-arrival-products");
       sr.reveal(".new-arrival-title", {
         origin: "top",
@@ -55,28 +57,33 @@ function ProductList() {
 
       sr.reveal(".new-sell-products", {
         delay: 0,
-        distance: "70px",
+        distance: "50px",
         viewFactor: 0.1,
       });
-
+      
       sr.reveal(".new-sell-title", {
         origin: "top",
         delay: 0,
-        distance: "70px",
+        distance: "50px",
         viewFactor: 0.1,
       });
 
       sr.reveal(".by-style", {
         origin: "left",
-        distance: "70px",
+        distance: "50px",
+        viewFactor: 0.5,
       });
 
       sr.reveal(".feedback", {
         origin: "right",
-        distance: "70px",
+        distance: "50px",
+        viewFactor: 0.5,
       });
+
+      // Cleanup function to prevent memory leaks
+      return () => sr.destroy();
     }
-  }, [isAuth]);
+  }, [isAuth]); // Only re-run if isAuth changes
 
   return (
     <div>

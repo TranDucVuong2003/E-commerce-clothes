@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import FilterIcon from "../assets/Icon/FilterIcon";
 import RightArrowIcon from "../assets/Icon/RightArrowIcon";
 import Button from "./Button";
@@ -7,6 +7,7 @@ import ProductGrid from "./ProductGrid";
 import PreviousIcon from "../assets/Icon/PreviousIcon";
 import NextIcon from "../assets/Icon/NextIcon";
 import LoadingCard from "./LoadingCard";
+import { use } from "react";
 
 function ProductShop() {
   // Lấy dữ liệu từ Context
@@ -33,14 +34,24 @@ function ProductShop() {
 
   // Xử lí pre và next Btn
   const handleNextBtn = () => {
-
-  }
+    if (currentPage == numberOfPage) {
+      setCurrentPage(numberOfPage);
+    } else {
+      setCurrentPage(currentPage + 1);
+    }
+  };
 
   const handlePreviousBtn = () => {
+    if (currentPage == 1) {
+      setCurrentPage(1);
+    } else {
+      setCurrentPage(currentPage - 1);
+    }
+  };
 
-  }
-
-  
+  useEffect(() => {
+    setNumberOfPage(Math.floor(productSellList.length / offSetValue));
+  }, [productSellList, offSetValue]);
 
   return (
     <div className="">
@@ -50,7 +61,7 @@ function ProductShop() {
           <div>
             <div className="w-[295px] rounded-3xl border-2 px-6 pt-5 pb-7">
               <div className="flex justify-between">
-                <span className="font-bold text-[20px]">Filtes</span>
+                <span className="font-bold text-[20px]">Filters</span>
                 <FilterIcon />
               </div>
 
@@ -134,7 +145,7 @@ function ProductShop() {
 
               <div className="border-b-2 my-6"></div>
 
-              <span className="font-bold text-[20px]">Filtes</span>
+              <span className="font-bold text-[20px]">Filters</span>
 
               <div className="mt-3">
                 <ul className="flex flex-col gap-5">
@@ -244,35 +255,41 @@ function ProductShop() {
 
             <div className="w-full h-5 flex items-center justify-between">
               <button
-              onClick={handlePreviousBtn()}
-              className="flex items-center gap-2 border-2 p-2 px-4 rounded-xl hover:opacity-70">
+                onClick={() => handlePreviousBtn()}
+                disabled={currentPage === 1}
+                // className="flex items-center gap-2 border-2 p-2 px-4 rounded-xl hover:opacity-70"
+                className={`py-2 px-4 rounded-xl border border-gray-400 flex items-center gap-2 ${
+                  currentPage === 1
+                    ? "opacity-50 cursor-not-allowed"
+                    : "cursor-pointer hover:bg-gray-200"
+                }`}
+              >
                 <PreviousIcon />
                 <span>Previous</span>
               </button>
-              <div className="flex gap-2">
+
+              <div className="flex gap-2 items-center">
+                <span className="px-4">{`Page ${currentPage} of ${numberOfPage}`}</span>
                 {[...Array(numberOfPage)].map((_, index) => (
                   <button
                     key={index}
-                    onClick={() =>setCurrentPage(index+1)}
+                    onClick={() => setCurrentPage(index + 1)}
                     className="border-none p-2 px-4 hover:opacity-70 bg-[#eeebeb] rounded-xl"
                   >
                     {index + 1}
                   </button>
                 ))}
-                {/* <button className="border-none p-2 px-4 hover:opacity-70 bg-[#eeebeb] rounded-xl ">
-                  1
-                </button>
-                <button className="border-none p-2 px-4 hover:opacity-70 bg-[#eeebeb] rounded-xl">
-                  2
-                </button>
-                <button className="border-none p-2 px-4 hover:opacity-70 bg-[#eeebeb] rounded-xl">
-                  3
-                </button> */}
               </div>
 
-              <button 
-              onClick={handleNextBtn()}
-              className="flex items-center gap-2 border-2 p-2 px-4 rounded-xl hover:opacity-70">
+              <button
+                onClick={() => handleNextBtn()}
+                disabled={currentPage === numberOfPage}
+                className={`py-2 px-4 rounded-xl border border-gray-400 flex items-center gap-2 ${
+                  currentPage === numberOfPage
+                    ? "opacity-50 cursor-not-allowed"
+                    : "cursor-pointer hover:bg-gray-200"
+                }`}
+              >
                 <span>Next</span>
                 <NextIcon />
               </button>

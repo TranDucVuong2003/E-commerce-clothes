@@ -24,12 +24,20 @@ function Header() {
     navigate("/login");
   };
 
+  const handleLogoClick = (e) => {
+    if (window.location.pathname === '/') {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="fixed z-50 top-0 left-0 w-full bg-white shadow-md h-[96px] ">
       <div className="container py-6">
         <div className="flex h-[48px] items-center justify-between">
           <Link
             to={"/"}
+            onClick={handleLogoClick}
             className="font-bold text-[24px] md:text-[32px] leading-10 cursor-pointer font-[Integral]"
           >
             SHOP.CO

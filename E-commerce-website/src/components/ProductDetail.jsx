@@ -27,10 +27,6 @@ function ProductDetail() {
   console.log('sliceNumberStart sliceNumberEnd', sliceNumberStart, sliceNumberEnd);
   
 
-  // const [searchParams] = useSearchParams();
-  // const category = searchParams.get("category"); // Lấy giá trị của tham số query param "category" từ URL "
-  // console.log("searchParams", category);
-
   useEffect(() => {
     if (data) setMainImg(data.imageUrl);
   }, [data]);
